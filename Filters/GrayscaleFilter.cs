@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MyPhotoshop.Filters
 {
-    public class GrayscaleFilter:IFilter
+    public class GrayscaleFilter:PixelFilter
     {
-        public ParameterInfo[] GetParameters()
+        public override ParameterInfo[] GetParameters()
         {
             return new ParameterInfo[0];
         }
@@ -19,18 +19,10 @@ namespace MyPhotoshop.Filters
             return "Оттенки серого";
         }
 
-        public Photo Process(Photo original, double[] parameters)
+        public override Pixel ProcessPixel(Pixel pixel, double[] parametes)
         {
-            var result = new Photo(original.width, original.height);
-            for (int x = 0; x < original.width; x++)
-            {
-                for (int y = 0; y < original.height; y++)
-                {
-                    var lightness = 0.3 * original[x, y].R + 0.59 * original[x, y].G + 0.11 * original[x, y].B;
-                    result[x, y] = new Pixel(lightness, lightness, lightness);
-                }
-            }
-            return result;
+            var lightness = 0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B;
+            return new Pixel(lightness, lightness, lightness);
         }
     }
 }
