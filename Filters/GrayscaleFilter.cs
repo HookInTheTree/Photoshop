@@ -1,4 +1,5 @@
 ﻿using MyPhotoshop.Data;
+using MyPhotoshop.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,14 @@ namespace MyPhotoshop.Filters
 {
     public class GrayscaleFilter:PixelFilter
     {
-        public override ParameterInfo[] GetParameters()
-        {
-            return new ParameterInfo[0];
-        }
+        public GrayscaleFilter() : base(new GrayscaleParameters()) { }
 
         public override string ToString()
         {
             return "Оттенки серого";
         }
 
-        public override Pixel ProcessPixel(Pixel pixel, double[] parametes)
+        public override Pixel ProcessPixel(Pixel pixel, IParameters parametes)
         {
             var lightness = 0.3 * pixel.R + 0.59 * pixel.G + 0.11 * pixel.B;
             return new Pixel(lightness, lightness, lightness);

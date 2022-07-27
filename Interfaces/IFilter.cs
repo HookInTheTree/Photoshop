@@ -1,6 +1,6 @@
 using System;
 
-namespace MyPhotoshop
+namespace MyPhotoshop.Interfaces
 {
 
 	
