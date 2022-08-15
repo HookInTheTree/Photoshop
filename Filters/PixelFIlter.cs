@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace MyPhotoshop.Filters
 {
-    public abstract class PixelFilter : ParametrizedFilter
+    public abstract class PixelFilter<TParameters> : ParametrizedFilter<TParameters>
+        where TParameters : IParameters, new()
     {
-        public PixelFilter(IParameters parameters) : base(parameters) { }
-        public override Photo Process(Photo original, IParameters parameters)
+        public override Photo Process(Photo original, TParameters parameters)
         {
             var result = new Photo(original.width, original.height);
             for (int x = 0; x < original.width; x++)
@@ -23,7 +23,7 @@ namespace MyPhotoshop.Filters
             }
             return result;
         }
-        public abstract Pixel ProcessPixel(Pixel pixel, IParameters parameters);
+        public abstract Pixel ProcessPixel(Pixel pixel, TParameters parameters);
 
     }
 }

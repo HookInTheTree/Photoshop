@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MyPhotoshop.Filters
 {
-    internal class LighteningParameters : IParameters
+    public class LighteningParameters : IParameters
     {
         public double Coefficient { get; set; }
         public ParameterInfo[] GetDescription()
