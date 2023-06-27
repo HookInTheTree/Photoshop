@@ -1,11 +1,7 @@
 ﻿using MyPhotoshop.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace MyPhotoshop.Filters
+
+namespace MyPhotoshop.Parameters
 {
     public class GrayscaleParameters : IParameters
     {

@@ -1,12 +1,7 @@
-﻿using MyPhotoshop.Data;
-using MyPhotoshop.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MyPhotoshop.Interfaces;
 
-namespace MyPhotoshop.Filters
+
+namespace MyPhotoshop.Filters.Abstract
 {
     public abstract class ParametrizedFilter<TParameters> :IFilter
         where TParameters:IParameters, new()
