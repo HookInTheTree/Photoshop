@@ -50,6 +50,7 @@
     <Compile Include="Filters\PixelFIlter.cs" />
     <Compile Include="Interfaces\IParameters.cs" />
     <Compile Include="Main.cs" />
+    <Compile Include="Parameters\RotationParameters.cs" />
     <Compile Include="Window\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
