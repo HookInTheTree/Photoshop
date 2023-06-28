@@ -1,4 +1,4 @@
-using System;
+using MyPhotoshop.Parameters;
 
 namespace MyPhotoshop.Interfaces
 {

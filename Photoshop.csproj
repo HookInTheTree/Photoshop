@@ -44,7 +44,7 @@
     <Compile Include="Data\Pixel.cs" />
     <Compile Include="Parameters\GrayscaleParameters.cs" />
     <Compile Include="Parameters\LighteningParameters.cs" />
-    <Compile Include="Filters\ParameterInfo.cs" />
+    <Compile Include="Parameters\ParameterInfo.cs" />
     <Compile Include="Filters\Abstract\ParametrizedFilter.cs" />
     <Compile Include="Filters\PixelFIlter.cs" />
     <Compile Include="Interfaces\IParameters.cs" />
