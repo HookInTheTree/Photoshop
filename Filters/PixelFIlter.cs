@@ -9,12 +9,10 @@ namespace MyPhotoshop.Filters
     public class PixelFilter<TParameters> : ParametrizedFilter<TParameters>
         where TParameters : IParameters, new()
     {
-        private readonly string name;
         private readonly Func<Pixel, TParameters, Pixel> processor;
 
-        public PixelFilter(string name, Func<Pixel, TParameters, Pixel> pixelProcessor)
+        public PixelFilter(string name, Func<Pixel, TParameters, Pixel> pixelProcessor):base(name)
         {
-            this.name = name;
             this.processor = pixelProcessor;
         }
 
@@ -31,9 +29,5 @@ namespace MyPhotoshop.Filters
             return result;
         }
 
-        public override string ToString()
-        {
-            return name;
-        }
     }
 }

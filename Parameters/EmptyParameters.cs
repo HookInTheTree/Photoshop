@@ -3,7 +3,7 @@
 
 namespace MyPhotoshop.Parameters
 {
-    public class GrayscaleParameters : IParameters
+    public class EmptyParameters : IParameters
     {
         public double Coefficient { get; set; }
         public ParameterInfo[] GetDescription()

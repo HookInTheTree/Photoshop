@@ -6,6 +6,12 @@ namespace MyPhotoshop.Filters.Abstract
     public abstract class ParametrizedFilter<TParameters> :IFilter
         where TParameters:IParameters, new()
     {
+        private readonly string name;
+        public ParametrizedFilter(string name)
+        {
+            this.name = name;
+        }
+
         public Photo Process(Photo photo, double[] values)
         {
             var parameters = new TParameters();
@@ -20,6 +26,10 @@ namespace MyPhotoshop.Filters.Abstract
             return new TParameters().GetDescription();
         }
 
+        public override string ToString()
+        {
+            return name;
+        }
 
     }
 }
