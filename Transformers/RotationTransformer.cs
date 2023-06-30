@@ -11,23 +11,27 @@ namespace MyPhotoshop.Transformers
 {
     public class RotationTransformer : ITransformer<RotationParameters>
     {
-        public Point? TransformPoint(Point point, Size size, RotationParameters parameters)
+        public Size ResultSize { get; private set; }
+        public Size OriginalSize { get; private set; }
+        public double Angle { get; private set; }
+
+        public Point? TransformPoint(Point point)
         {
-            var newSize = TransformSize(size, parameters);
-            var angle = Math.PI * parameters.Angle / 180;
+            var newSize = ResultSize;
             point = new Point(point.X - newSize.Width / 2, point.Y - newSize.Height / 2);
-            var x = size.Width / 2 + (int)(point.X * Math.Cos(angle) + point.Y * Math.Sin(angle));
-            var y = size.Height / 2 + (int)(-point.X * Math.Sin(angle) + point.Y * Math.Cos(angle));
-            if (x < 0 || x >= size.Width || y < 0 || y >= size.Height) return null;
+            var x = OriginalSize.Width / 2 + (int)(point.X * Math.Cos(Angle) + point.Y * Math.Sin(Angle));
+            var y = OriginalSize.Height / 2 + (int)(-point.X * Math.Sin(Angle) + point.Y * Math.Cos(Angle));
+            if (x < 0 || x >= OriginalSize.Width || y < 0 || y >= OriginalSize.Height) return null;
             return new Point(x, y);
         }
 
-        public Size TransformSize(Size size, RotationParameters parameters)
+        public void Prepare(Size size, RotationParameters parameters)
         {
-            var angle = Math.PI * parameters.Angle / 180;
-            return new Size(
-                (int)(size.Width * Math.Abs(Math.Cos(angle)) + size.Height * Math.Abs(Math.Sin(angle))),
-                (int)(size.Height * Math.Abs(Math.Cos(angle)) + size.Width * Math.Abs(Math.Sin(angle))));
+            OriginalSize = size;
+            Angle = Math.PI * parameters.Angle / 180;
+            ResultSize =  new Size(
+                (int)(size.Width * Math.Abs(Math.Cos(Angle)) + size.Height * Math.Abs(Math.Sin(Angle))),
+                (int)(size.Height * Math.Abs(Math.Cos(Angle)) + size.Width * Math.Abs(Math.Sin(Angle))));
         }
     }
 }

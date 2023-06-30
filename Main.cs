@@ -29,29 +29,29 @@ namespace MyPhotoshop
 				}
 			);
 
-            //var reflectionFilter = new TransformFilter<EmptyParameters>(
-            //    "Отразить по горизонтали",
-            //    (size, parameters) => size,
-            //    (point, size, parameters) => new Point(size.Width - point.X - 1, point.Y)
-            //);
+			var reflectionFilter = new TransformFilter(
+				"Отразить по горизонтали",
+				(size) => size,
+				(point, size) => new Point(size.Width - point.X - 1, point.Y)
+			);
 
-            //var rotationFilter = new TransformFilter<EmptyParameters>(
-            //    "Поворот на 90 градусов против ч.с",
-            //    (size, parameters) => new Size(size.Height, size.Width),
-            //    (point, size, parameters) => new Point(point.Y, point.X)
-            //);
+			var rotationFilter = new TransformFilter(
+				"Поворот на 90 градусов против ч.с",
+				(size) => new Size(size.Height, size.Width),
+				(point, size) => new Point(point.Y, point.X)
+			);
 
 
-            var angleRotationFilter = new TransformFilter<RotationParameters>(
+			var angleRotationFilter = new TransformFilter<RotationParameters>(
                 "Повернуть на указанное количество градусов",
                 new RotationTransformer()
             );
 
 			window.AddFilter(lightenigFilter);
 			window.AddFilter(grayscaleFilter);
-            //window.AddFilter(reflectionFilter);
-            //window.AddFilter(rotationFilter);
-            window.AddFilter(angleRotationFilter);
+			window.AddFilter(reflectionFilter);
+			window.AddFilter(rotationFilter);
+			window.AddFilter(angleRotationFilter);
             Application.Run(window);
 		}
 	}

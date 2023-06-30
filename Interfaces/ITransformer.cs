@@ -10,7 +10,9 @@ namespace MyPhotoshop.Interfaces
     public interface ITransformer<TParameters>
         where TParameters:IParameters
     {
-        Size TransformSize(Size size, TParameters parameters);
-        Point? TransformPoint(Point point, Size size, TParameters parameters);
+        Size OriginalSize { get; }
+        Size ResultSize { get;  }
+        void Prepare(Size size, TParameters parameters);
+        Point? TransformPoint(Point point);
     }
 }
